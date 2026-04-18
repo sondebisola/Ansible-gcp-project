@@ -18,6 +18,8 @@ resource "google_compute_instance" "ansible_ubuntu" {
 ${file("${path.module}/ansible-install-ubuntu.sh")}
 ${file("${path.module}/vscode-install.sh")}
 EOF
+
+ssh-keys = "ansible:${file(var.my_key)}"
 }
 
 # 2. TWO UBUNTU MANAGED HOSTS
@@ -37,6 +39,7 @@ resource "google_compute_instance" "ubuntu_hosts" {
   }
 
   metadata_startup_script = file("${path.module}/create_ansible_user.sh")
+  ssh-keys = "ansible:${file(var.my_key)}"
 }
 
 # 3. ONE RHEL MANAGED HOST
@@ -55,9 +58,7 @@ resource "google_compute_instance" "rhel_hosts" {
   }
 
   metadata_startup_script = file("${path.module}/create_ansible_user.sh")
+  ssh-keys = "ansible:${file(var.my_key)}"
 }
 
-  metadata = {
-    # This tells GCP: Create a user named 'ansible' and let them in with this key
-    ssh-keys = "ansible:${file(var.my_key)}"
-  }
+

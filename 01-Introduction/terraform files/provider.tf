@@ -1,15 +1,17 @@
-#terraform block
 terraform {
+  # Ensures you are using a modern version of Terraform
   required_version = "~> 1.0"
+
   required_providers {
     google = {
       source  = "hashicorp/google"
-      version = "~> 4.0" 
+      version = "~> 4.0"
     }
   }
 }
 
 provider "google" {
+  # These variables are defined in your variables.tf file
   project = var.gcp_project_id
-  region  = "us-central1"
+  region  = var.gcp_region
 }
