@@ -49,7 +49,7 @@ resource "google_compute_instance" "ubuntu_hosts" {
     ssh-keys = "ansible:${file(var.my_key)}"
   }
 
-  metadata_startup_script = file("${path.module}/create_ansible_user.sh")
+  metadata_startup_script = file("${path.module}/create_ansible_user_ubuntu.sh")
 }
 
 # 3. THE MANAGED RHEL NODE (Count = 1)
@@ -73,7 +73,7 @@ resource "google_compute_instance" "rhel_hosts" {
     ssh-keys = "ansible:${file(var.my_key)}"
   }
 
-  metadata_startup_script = file("${path.module}/create_ansible_user.sh")
+  metadata_startup_script = file("${path.module}/create_ansible_user_rhel.sh")
 }
 
 # 4. FIREWALL RULE (To allow you to SSH from your Mac)
