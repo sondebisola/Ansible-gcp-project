@@ -1,6 +1,6 @@
 
 variable "gcp_project_id" {
-  deffault = "enterpriseai-459922"
+  default = "enterpriseai-459922"
   type        = string
 }
 
