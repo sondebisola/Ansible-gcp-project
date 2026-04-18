@@ -1,7 +1,7 @@
 
 variable "gcp_project_id" {
   default = "enterpriseai-459922"
-  type        = string
+  type    = string
 }
 
 variable "gcp_region" {
